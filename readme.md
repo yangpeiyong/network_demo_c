@@ -12,9 +12,9 @@ You can read the source code `tcp_server.c` and `tcp_client.c`
 
 *Build*
 
-clang -std=c11 -g -o tcp_server tcp_server.c
+`clang -std=c11 -g -o tcp_server tcp_server.c`
 
-clang -std=c11 -g -o tcp_client tcp_client.c
+`clang -std=c11 -g -o tcp_client tcp_client.c`
 
 *RUN*
 
