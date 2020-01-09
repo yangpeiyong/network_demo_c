@@ -10,6 +10,7 @@
 #include <errno.h>
 #include <sys/epoll.h>
 #include <fcntl.h>
+#include <signal.h>
 
 #define MAX_CONN 128
 
@@ -79,10 +80,10 @@ int main(int argc, char *argv[]) {
 
         for(int i=0; i<n; i++){
 
-            if((events[i].events & EPOLLERR) || (events[i].events & EPOLLHUB)) {
+            if((events[i].events & EPOLLERR) || (events[i].events & EPOLLHUP)) {
                 fprintf(stderr, "epoll error\n");
-                close(event[i].data.fd);
-            } else if (listenfd == event[i].data.fd) {
+                close(events[i].data.fd);
+            } else if (listenfd == events[i].data.fd) {
 
                 struct sockaddr_in clientAddr;
                 struct sockaddr_storage ss;
