@@ -1,6 +1,7 @@
 
 This project contains the code I writen when I learn network programming.
 
+Notice, if you are using linux system, using `gcc` instead of `clang`.
 
 # 1. One to One TCP
 
@@ -54,6 +55,10 @@ You can use any tcp client to test this server.
 
 
 # 4. TCP Using `epoll`
+
+osx doesn't support epoll, you can only use linux to run this code.
+
+The source code is `tcp_epoll_server.c`, any client code is OK.
 
 
 
