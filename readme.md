@@ -30,8 +30,28 @@ then run client:
 
 # 2. TCP Using `select`
 
+You can read the source code `tcp_select_client.c`
+
+*Build*
+
+
+`clang -std=c11 -g -o tcp_client tcp_select_client.c`
+
+You can use any tcp server to test this client.
+
 
 # 3. TCP Using `poll`
+
+You can read the source code `tcp_poll_server.c`
+
+This tcp server support multiple clients.
+
+*Build*
+
+`clang -std=c11 -g -o tcp_poll_server tcp_poll_server.c`
+
+You can use any tcp client to test this server.
+
 
 # 4. TCP Using `epoll`
 

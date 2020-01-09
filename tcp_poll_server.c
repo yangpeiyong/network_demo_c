@@ -64,6 +64,8 @@ int main(int argc, char *argv[]) {
 
     for (;;) {
 
+//        sleep(10);
+
         int ready_number = 0;
 
         if((ready_number = poll(event_set, MAX_CONN, -1)) <0){
@@ -78,6 +80,7 @@ int main(int argc, char *argv[]) {
                 if(event_set[i].fd<0){
                     event_set[i].fd = connfd;
                     event_set[i].events = POLLRDNORM;
+                    printf("new client add:%d\n", i);
                     break;
                 }
             }
@@ -104,7 +107,7 @@ int main(int argc, char *argv[]) {
                 int n = read(socket_fd, buf, 256);
 
                 if (n > 0) {
-                    printf("%s\n", buf);
+                    printf("%d:%s\n",socket_fd, buf);
                     write(socket_fd, buf, n);
                     if (strcmp(buf, "exit") == 0) {
                         printf("server close\n");
@@ -120,9 +123,10 @@ int main(int argc, char *argv[]) {
                     event_set[i].fd = -1;
                 }
 
+                if (--ready_number <=0) break;
             }
 
-            if (--ready_number <=0) break;
+
 
         }
 
