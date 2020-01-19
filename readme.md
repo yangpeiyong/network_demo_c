@@ -61,6 +61,9 @@ osx doesn't support epoll, you can only use linux to run this code.
 The source code is `tcp_epoll_server.c`, any client code is OK.
 
 
+# 5. epoll and multi-thread, is solution for C10K.
+
+
 
 
 
